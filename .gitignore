@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.Python
+env/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Database
+.env
+config.ini
+*.db
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large files (optional)
+# data/*.csv

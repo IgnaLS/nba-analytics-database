@@ -1,0 +1,4 @@
+nba_api==1.4.1
+pandas==2.1.0
+sqlalchemy==2.0.20
+psycopg2-binary==2.9.7
