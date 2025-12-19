@@ -181,8 +181,6 @@ erDiagram
 - `team_game_stats` - Team statistics per game (many-to-many resolution between teams and games)
 - `player_stats_2024_25` - Player statistics per game
 
-```
-
 **Normalization:**
 - **1NF**: All attributes contain atomic values
 - **2NF**: No partial dependencies (e.g., `game_date` stored only in `games`, not in stats tables)
@@ -205,24 +203,26 @@ erDiagram
 
 ## Sample Analytical Queries
 
+--- 
+
 ### 1. Top 10 Scorers (2024-25 Season)
 ```sql
-SELECT                                                                                                                                                                                                                                
-p.first_name,
-p.last_name,                                                                                                                                                                                                                                     
-p.position                                                                                                                                                                                                                            
-t.abbreviation as team,                                                                                                                                                                                                                           
-COUNT(*) as games_played,                                                                                                                                                                                                                         
-ROUND(AVG(ps.pts), 1) as avg_pts,                                                                                                                                                                                                                 
-ROUND(AVG(ps.reb), 1) as avg_reb,                                                                                                                                                                                                                 
-ROUND(AVG(ps.ast), 1) as avg_ast                                                                                                                                                                                                              
-FROM player_stats_2024_25 ps                                                                                                                                                                                                                      
-JOIN players_2024_25 p ON ps.player_id = p.player_id                                                                                                                                                                                              
-JOIN teams t ON p.team_id = t.team_id                                                                                                                                                                                                             
-GROUP BY p.player_id, p.first_name, p.last_name, p.position, t.abbreviation                                                                                                                                                                       
-HAVING COUNT(*) >= 10                                                                                                                                                                                                                             
-ORDER BY avg_pts DESC                                                                                                                                                                                                                             
-LIMIT 10; 
+SELECT 
+    p.first_name,
+    p.last_name,
+    p.position,
+    t.abbreviation as team,
+    COUNT(*) as games_played,
+    ROUND(AVG(ps.pts), 1) as avg_pts,
+    ROUND(AVG(ps.reb), 1) as avg_reb,
+    ROUND(AVG(ps.ast), 1) as avg_ast
+FROM player_stats_2024_25 ps
+JOIN players_2024_25 p ON ps.player_id = p.player_id
+JOIN teams t ON p.team_id = t.team_id
+GROUP BY p.player_id, p.first_name, p.last_name, p.position, t.abbreviation
+HAVING COUNT(*) >= 10
+ORDER BY avg_pts DESC
+LIMIT 10;
 ```
 ---
 
