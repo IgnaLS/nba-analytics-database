@@ -188,7 +188,7 @@ erDiagram
 
 ---
 
-##️ Technologies Used
+## Technologies Used
 
 - **Database**: PostgreSQL 14+
 - **Python**: 3.11+
