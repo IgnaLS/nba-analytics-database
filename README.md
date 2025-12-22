@@ -80,8 +80,8 @@ erDiagram
     }
 
     team_game_stats {
-        bigint game_id PK_FK
-        bigint team_id PK_FK
+        bigint game_id PK
+        bigint team_id PK
         text wl
         bigint min
         bigint pts
@@ -106,8 +106,8 @@ erDiagram
     }
 
     player_stats_2024_25 {
-        bigint game_id PK_FK
-        bigint player_id PK_FK
+        bigint game_id PK
+        bigint player_id PK
         text nickname
         integer seconds_played
         bigint pts
