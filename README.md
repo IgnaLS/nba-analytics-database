@@ -322,7 +322,12 @@ CREATE DATABASE nba_analytics;
 ```
 
 ### Step 4: Run Scripts
-Follow scripts in order to populate the database with NBA data.
+```bash
+# Restore complete database from dump
+psql -U postgres -d nba_analytics -f data/nba_analytics_dump.sql
+```
+
+This will create all tables, relationships, and load 30,000+ records.
 
 ---
 
@@ -333,8 +338,7 @@ nba-analytics-database/
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
-├── scripts/ (soon)
-│   └── (SQL/Python scripts)
+├── nba_analytics_dump.sql (SQL Script)
 └── data/
     └── (CSV backups)
 
